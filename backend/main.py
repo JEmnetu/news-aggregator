@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from database import engine, Base
 from models import User, Bookmark, Article
-from routers import auth, news, bookmarks
+from routers import auth, news, bookmarks, users
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 from jobs import fetch_and_store_news
@@ -32,4 +32,5 @@ Base.metadata.create_all(bind=engine)
 app.include_router(auth.router)
 app.include_router(news.router)
 app.include_router(bookmarks.router)
+app.include_router(users.router)
 

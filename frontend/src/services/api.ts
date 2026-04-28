@@ -4,6 +4,7 @@ import { RegisterResponse } from '../types/RegisterResponse'
 import { AuthResponse } from '../types/AuthResponse'
 import { NewsResponse } from '../types/NewsResponse'
 import { MessageResponse } from '../types/MessageResponse'
+import { User } from '../types/User'
 
 const apiClient: AxiosInstance = axios.create({
     baseURL: 'http://localhost:8000',
@@ -31,6 +32,11 @@ export const loginUser = async (email: string, password: string): Promise<AuthRe
     const response = await apiClient.post('/auth/login', userCredentials);
 
     return response.data;
+}
+
+export const getMe = async (): Promise<User> => {
+    const response = await apiClient.get("/users/me")
+    return response.data
 }
 
 export const getNews = async (category?: string, search?: string, page?: number, page_size?: number): Promise<NewsResponse> => {

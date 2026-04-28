@@ -1,11 +1,12 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { User } from '../types/User'
-import { loginUser, registerUser } from '../services/api';
+import { loginUser, registerUser, getMe } from '../services/api';
 
 interface AuthContextType {
     token: string | null;
     isAuthenticated: boolean;
     loading: boolean;
+    currentUser: User | null;
     login: (email: string, password: string) => Promise<void>;
     logout: () => void;
     register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>
@@ -16,10 +17,14 @@ const AuthContext = createContext<AuthContextType | null>(null)
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [token, setToken] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+
+    const [currentUser, setCurrentUser] = useState<User | null>(null);
+
     useEffect(() => {
         const savedToken = localStorage.getItem('token')
         if (savedToken) {
             setToken(savedToken)
+            getUserInfo()
         }
         setLoading(false)
     }, [])
@@ -40,11 +45,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setToken(null)
     }
 
+    const getUserInfo = async () => {
+        const response = await getMe()
+        setCurrentUser(response);
+    }
+
     return (
         <AuthContext.Provider value={{
             token,
             isAuthenticated: !!token,
             loading,
+            currentUser,
             login,
             logout,
             register,
