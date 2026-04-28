@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import BookmarksPage from './pages/BookmarksPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
+import NavBar from './components/Navbar';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   // }
   return (
     <BrowserRouter>
+    <NavBar/>
       <Routes>
         <Route path='/login' element={<PublicRoute><LoginPage /></PublicRoute>} />
         <Route path='/register' element={<PublicRoute><RegisterPage /></PublicRoute>} />
