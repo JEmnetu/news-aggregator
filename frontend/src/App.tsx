@@ -6,6 +6,7 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import BookmarksPage from './pages/BookmarksPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
 
 
 function App() {
@@ -24,8 +25,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
+        <Route path='/login' element={<PublicRoute><LoginPage /></PublicRoute>} />
+        <Route path='/register' element={<PublicRoute><RegisterPage /></PublicRoute>} />
         <Route path='/' element={<ProtectedRoute> <HomePage /></ProtectedRoute>} />
         <Route path='/bookmarks' element={<ProtectedRoute> <BookmarksPage /> </ProtectedRoute>} />
       </Routes>

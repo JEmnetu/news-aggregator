@@ -5,6 +5,7 @@ import { loginUser, registerUser } from '../services/api';
 interface AuthContextType {
     token: string | null;
     isAuthenticated: boolean;
+    loading: boolean;
     login: (email: string, password: string) => Promise<void>;
     logout: () => void;
     register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>
@@ -14,11 +15,13 @@ const AuthContext = createContext<AuthContextType | null>(null)
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [token, setToken] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
     useEffect(() => {
         const savedToken = localStorage.getItem('token')
         if (savedToken) {
             setToken(savedToken)
         }
+        setLoading(false)
     }, [])
     //logic
     const login = async (email: string, password: string) => {
@@ -41,6 +44,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         <AuthContext.Provider value={{
             token,
             isAuthenticated: !!token,
+            loading,
             login,
             logout,
             register,

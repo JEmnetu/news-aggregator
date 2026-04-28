@@ -39,7 +39,7 @@ const LoginPage = () => {
                         <Form.Control type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
 
-                    <Button variant='primary' onClick={handleLogin}>Submit</Button>
+                    <Button variant='primary' onClick={handleLogin}>Log In</Button>
                 </Form>
             </Row>
 
