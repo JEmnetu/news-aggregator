@@ -1,3 +1,13 @@
 .App {
   text-align: center;
 }
+
+.bookmark-hover{
+  color: blue;
+  cursor: pointer;
+  box-shadow: 1em;
+}
+
+.card-subtitle {
+  font-size: .85em !important;
+}

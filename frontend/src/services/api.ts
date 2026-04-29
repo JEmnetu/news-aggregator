@@ -6,6 +6,7 @@ import { NewsResponse } from '../types/NewsResponse'
 import { MessageResponse } from '../types/MessageResponse'
 import { User } from '../types/User'
 import { jwtDecode } from 'jwt-decode'
+import { BookmarkResponse } from '../types/BookmarkResponse'
 
 const apiClient: AxiosInstance = axios.create({
     baseURL: 'http://localhost:8000',
@@ -53,6 +54,11 @@ export const getMe = async (): Promise<User> => {
 export const getNews = async (category?: string, search?: string, page?: number, page_size?: number): Promise<NewsResponse> => {
     const response = await apiClient.get('/news', { params: { category, search, page, page_size } });
     return response.data
+}
+
+export const getBookmarks = async (): Promise<BookmarkResponse> => {
+    const response = await apiClient.get('/bookmarks');
+    return response.data;
 }
 
 export const createBookmark = async (article_url: string, title: string, image_url?: string): Promise<MessageResponse> => {
