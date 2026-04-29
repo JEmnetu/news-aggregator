@@ -5,6 +5,7 @@ import { AuthResponse } from '../types/AuthResponse'
 import { NewsResponse } from '../types/NewsResponse'
 import { MessageResponse } from '../types/MessageResponse'
 import { User } from '../types/User'
+import { jwtDecode } from 'jwt-decode'
 
 const apiClient: AxiosInstance = axios.create({
     baseURL: 'http://localhost:8000',
@@ -15,10 +16,20 @@ const apiClient: AxiosInstance = axios.create({
 apiClient.interceptors.request.use((config) => {
     const token = localStorage.getItem('token')
     if (token) {
+        if (isTokenExpired(token)) {
+            localStorage.removeItem('token');
+            window.location.href = '/login'
+            return Promise.reject('Token expired')
+        }
         config.headers.Authorization = `Bearer ${token}`
     }
     return config
 })
+
+const isTokenExpired = (token: string): boolean => {
+    const decoded: { exp: number } = jwtDecode(token)
+    return decoded.exp * 1000 < Date.now()
+}
 
 export const registerUser = async (email: string, password: string, firstName: string, lastName: string): Promise<RegisterResponse> => {
     const newUser = { email: email, password: password, first_name: firstName, last_name: lastName };
