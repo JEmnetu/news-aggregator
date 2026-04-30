@@ -38,6 +38,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const response = await loginUser(email, password)
         localStorage.setItem('token', response.access_token)
         setToken(response.access_token)
+        await getUserInfo()
+        await fetchBookmarks()
     }
 
     const register = async (email: string, password: string, firstName: string, lastName: string) => {
