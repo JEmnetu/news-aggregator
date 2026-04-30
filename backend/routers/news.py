@@ -36,7 +36,7 @@ router = APIRouter(prefix='/news', tags=['news'])
 
 @router.get('/')
 def get_news(
-    category: str = 'general',
+    category: str = None,
     search: str = None,
     page: int = 1,
     page_size: int = 10,
