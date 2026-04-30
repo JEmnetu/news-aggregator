@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { User } from '../types/User'
-import { loginUser, registerUser, getMe, getBookmarks } from '../services/api';
+import { loginUser, registerUser, getMe, getBookmarks, deleteBookmark } from '../services/api';
 import { Bookmark } from '../types/Bookmark';
 
 interface AuthContextType {

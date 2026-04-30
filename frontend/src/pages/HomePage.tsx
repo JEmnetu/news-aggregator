@@ -14,7 +14,7 @@ const HomePage = () => {
 
     const getNewsArticles = async () => {
 
-        const response = await getNews();
+        const response = await getNews('general', '', 1 , 20);
         setNews(response)
     }
 
