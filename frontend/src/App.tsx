@@ -9,17 +9,45 @@ import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
 import NavBar from './components/Navbar';
 
-
 function App() {
-
   return (
     <BrowserRouter>
-    <NavBar/>
+      <NavBar />
       <Routes>
-        <Route path='/login' element={<PublicRoute><LoginPage /></PublicRoute>} />
-        <Route path='/register' element={<PublicRoute><RegisterPage /></PublicRoute>} />
-        <Route path='/' element={<ProtectedRoute> <HomePage /></ProtectedRoute>} />
-        <Route path='/bookmarks' element={<ProtectedRoute> <BookmarksPage /> </ProtectedRoute>} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              {' '}
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/bookmarks"
+          element={
+            <ProtectedRoute>
+              {' '}
+              <BookmarksPage />{' '}
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
