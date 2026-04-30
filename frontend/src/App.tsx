@@ -12,17 +12,6 @@ import NavBar from './components/Navbar';
 
 function App() {
 
-
-  // const handleLogin = async () => {
-  //   //   await login(email, password)
-  //   //   // const response: AuthResponse = await loginUser(email, password);
-  //   //   // console.log(response);
-  //   // }
-
-  //   // const handleLogout = () => {
-  //   //   logout()
-  //   // }
-  // }
   return (
     <BrowserRouter>
     <NavBar/>
