@@ -25,7 +25,7 @@ const NavBar = () => {
                     {isAuthenticated && <>
                         <Nav.Link href='/'>Home</Nav.Link>
                         <Nav.Link href='/bookmarks'>Bookmarks</Nav.Link>
-                        <NavDropdown title={`${currentUser?.firstName}`} id="basic-nav-dropdown">
+                        <NavDropdown title={currentUser ? currentUser.firstName : ''} id="basic-nav-dropdown">
                             <NavDropdown.Item href="#">Profile</NavDropdown.Item>
                             <NavDropdown.Item href="#">Settings</NavDropdown.Item>
                             <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
