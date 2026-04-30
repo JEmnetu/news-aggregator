@@ -45,7 +45,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
                         <Row className="d-flex justify-content-between align-items-center mt-auto">
                             <Col xs="auto">
-                                <Button variant="primary" href={article.url} className="mb-1">Read More</Button></Col>
+                                <Button variant="primary" href={article.url} target="_blank" rel="noopener noreferrer" className="mb-1">Read More</Button></Col>
                             <Col xs="auto">
                                 {isBookmarked &&
                                     <BookmarkFill size={24} className={bookmarkHover ? 'bookmark-hover' : ''}
