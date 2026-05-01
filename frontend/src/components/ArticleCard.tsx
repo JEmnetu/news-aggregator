@@ -9,6 +9,7 @@ import { Bookmark, BookmarkFill } from 'react-bootstrap-icons';
 import { createBookmark } from '../services/api';
 import { MessageResponse } from '../types/MessageResponse';
 import { useAuth } from '../context/AuthContext';
+import placeholder from '../assets/placeholder.png';
 
 interface ArticleCardProps {
   article: Article;
@@ -36,7 +37,8 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         <Card className="h-100 d-flex flex-column">
           <Card.Img
             variant="top"
-            src={article.image_url}
+            src={article.image_url ? article.image_url : placeholder}
+            onError={(e) => (e.currentTarget.src = placeholder)}
             style={{ height: '200px', objectFit: 'cover' }}
           />
           <Card.Body>
