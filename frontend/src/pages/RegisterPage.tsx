@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
@@ -110,6 +110,13 @@ const RegisterPage = () => {
           </Row>
         </Form>
         <Row>
+          <Row className="mt-3 justify-content-center">
+            <Col md={6}>
+              <p>
+                Already have an account? <Link to="/login">Sign in</Link>
+              </p>
+            </Col>
+          </Row>
           <Col md={6} className="mb-2">
             <ToastContainer
               className="p-3"
