@@ -44,9 +44,9 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
             <Card.Subtitle>
               {new Date(article.published_at).toDateString().slice(4)}
             </Card.Subtitle>
-            <Card.Text>{article.description}</Card.Text>
+            {/* <Card.Text>{article.description}</Card.Text> */}
 
-            <Row className="d-flex justify-content-between align-items-center mt-auto">
+            <Row className="d-flex justify-content-between align-items-center mt-3">
               <Col xs="auto">
                 <Button
                   variant="primary"
