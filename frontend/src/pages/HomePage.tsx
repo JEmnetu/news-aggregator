@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import { Search } from 'react-bootstrap-icons';
+import Spinner from 'react-bootstrap/Spinner';
 
 const HomePage = () => {
   const [news, setNews] = useState<NewsResponse>();
@@ -64,6 +65,7 @@ const HomePage = () => {
                   return (
                     <Button
                       key={index}
+                      size="sm"
                       variant={
                         category === c.toLowerCase()
                           ? 'primary'
@@ -140,13 +142,26 @@ const HomePage = () => {
             </Row>
 
             <Row className="">
-              {news?.data.map((articleData) => {
-                return (
-                  <ArticleCard article={articleData} key={articleData.id} />
-                );
-              })}
+              {news &&
+                news.data.map((articleData) => {
+                  return (
+                    <ArticleCard article={articleData} key={articleData.id} />
+                  );
+                })}
+
+              {!news && <h3>No articles found!</h3>}
             </Row>
           </>
+        )}
+        {loading && (
+          <div
+            className="d-flex justify-content-center align-items-center"
+            style={{ minHeight: '50vh' }}
+          >
+            <Spinner animation="border" variant="primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
         )}
       </Container>
     </>

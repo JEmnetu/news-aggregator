@@ -33,7 +33,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
   return (
     <>
-      <Col sm={12} md={6} className="mb-4">
+      <Col sm={12} md={6} lg={4} className="mb-5">
         <Card className="h-100 d-flex flex-column">
           <Card.Img
             variant="top"
@@ -42,11 +42,29 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
             style={{ height: '200px', objectFit: 'cover' }}
           />
           <Card.Body>
-            <Card.Title>{article.title}</Card.Title>
+            <Card.Title
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
+              {article.title}
+            </Card.Title>
             <Card.Subtitle>
               {new Date(article.published_at).toDateString().slice(4)}
             </Card.Subtitle>
-            {/* <Card.Text>{article.description}</Card.Text> */}
+            <Card.Text
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
+              {article.description}
+            </Card.Text>
 
             <Row className="d-flex justify-content-between align-items-center mt-3">
               <Col xs="auto">

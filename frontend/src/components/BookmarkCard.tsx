@@ -24,7 +24,7 @@ const BookmarkCard = ({ bookmark }: BookmarkCardProps) => {
 
   return (
     <>
-      <Col sm={12} md={6} className="mb-4">
+      <Col sm={12} md={4} className="mb-4">
         <Card className="h-100 d-flex flex-column">
           <Card.Img
             variant="top"
