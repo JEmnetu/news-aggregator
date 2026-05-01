@@ -55,11 +55,11 @@ const HomePage = () => {
 
   return (
     <>
-      <Container className="mt-5">
+      <Container className="mt-3 mt-md-5">
         {!loading && (
           <>
-            <Row className="text-center">
-              <div className="d-flex gap-2 overflow-auto py-3">
+            <Row className="mb-4 d-none d-md-flex align-items-center">
+              <Col className="d-flex gap-2 overflow-auto">
                 {categories.map((c, index) => {
                   return (
                     <Button
@@ -75,6 +75,8 @@ const HomePage = () => {
                     </Button>
                   );
                 })}
+              </Col>
+              <Col md="auto">
                 <InputGroup className="">
                   <InputGroup.Text
                     id="search-icon"
@@ -94,8 +96,49 @@ const HomePage = () => {
                     }
                   />
                 </InputGroup>
+              </Col>
+            </Row>
+            <Row className="d-md-none">
+              <div className="d-flex gap-2 overflow-auto py-3">
+                {categories.map((c, index) => {
+                  return (
+                    <Button
+                      key={index}
+                      variant={
+                        category === c.toLowerCase()
+                          ? 'primary'
+                          : 'outline-primary'
+                      }
+                      onClick={() => handleSelectCategory(c.toLowerCase())}
+                    >
+                      {c}
+                    </Button>
+                  );
+                })}
               </div>
             </Row>
+            <Row className="mb-4 d-md-none">
+              <InputGroup className="">
+                <InputGroup.Text
+                  id="search-icon"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => handleFilterSearch(searchTerm)}
+                >
+                  <Search />
+                </InputGroup.Text>
+                <Form.Control
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="basic-addon1"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={(e) =>
+                    e.key === 'Enter' && handleFilterSearch(searchTerm)
+                  }
+                />
+              </InputGroup>
+            </Row>
+
             <Row className="">
               {news?.data.map((articleData) => {
                 return (
