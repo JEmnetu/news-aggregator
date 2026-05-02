@@ -25,11 +25,15 @@ const NavBar = () => {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/bookmarks">Bookmarks</Nav.Link>
                 <NavDropdown
-                  title={currentUser ? currentUser.firstName : ''}
+                  title={
+                    currentUser
+                      ? currentUser.firstName + ' ' + currentUser.lastName
+                      : ''
+                  }
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item href="#">Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="#">Settings</NavDropdown.Item>
+                  {/* <NavDropdown.Item href="#">Profile</NavDropdown.Item>
+                  <NavDropdown.Item href="#">Settings</NavDropdown.Item> */}
                   <NavDropdown.Item onClick={handleLogout}>
                     Logout
                   </NavDropdown.Item>

@@ -84,7 +84,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
                   <BookmarkFill
                     size={24}
                     className={bookmarkHover ? 'bookmark-hover' : ''}
-                    style={{ color: '#0d6efd' }}
+                    style={{ color: '#0f62b6' }}
                     onMouseEnter={() => setBookmarkHover(true)}
                     onMouseLeave={() => setBookmarkHover(false)}
                     // onClick={() => setIsBookmarked(false)}
@@ -94,7 +94,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
                   <Bookmark
                     size={24}
                     className={bookmarkHover ? 'bookmark-hover' : ''}
-                    style={{ color: '#0d6efd' }}
+                    style={{ color: '#0f62b6' }}
                     onMouseEnter={() => setBookmarkHover(true)}
                     onMouseLeave={() => setBookmarkHover(false)}
                     onClick={() => saveBookmark()}

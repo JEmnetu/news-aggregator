@@ -61,7 +61,7 @@ const BookmarkCard = ({ bookmark }: BookmarkCardProps) => {
                 <BookmarkFill
                   size={24}
                   className={bookmarkHover ? 'bookmark-hover' : ''}
-                  style={{ color: '#0d6efd' }}
+                  style={{ color: '#0f62b6' }}
                   onMouseEnter={() => setBookmarkHover(true)}
                   onMouseLeave={() => setBookmarkHover(false)}
                   onClick={() => handleDeleteBookmark(bookmark.id)}
