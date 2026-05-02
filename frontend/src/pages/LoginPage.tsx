@@ -56,7 +56,7 @@ const LoginPage = () => {
             <Row className="justify-content-center">
               <Col md={6}>
                 <Form.Group className="mb-3" controlId="email">
-                  <Form.Label>Email Address</Form.Label>
+                  <Form.Label className="text-white">Email Address</Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="Enter email"
@@ -66,7 +66,7 @@ const LoginPage = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label className="text-white">Password</Form.Label>
                   <Form.Control
                     type="password"
                     placeholder="Password"
@@ -93,7 +93,7 @@ const LoginPage = () => {
 
         <Row className="mt-4 justify-content-center">
           <Col md={6}>
-            <p>
+            <p className="text-white">
               Don't have an account? <Link to="/register">Register</Link>
             </p>
           </Col>

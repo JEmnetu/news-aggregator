@@ -8,6 +8,7 @@ import BookmarksPage from './pages/BookmarksPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
 import NavBar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

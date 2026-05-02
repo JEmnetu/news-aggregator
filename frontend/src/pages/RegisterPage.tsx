@@ -57,7 +57,7 @@ const RegisterPage = () => {
           <Row className="justify-content-center">
             <Col md={6}>
               <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email Address</Form.Label>
+                <Form.Label className="text-white">Email Address</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
@@ -67,7 +67,7 @@ const RegisterPage = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label className="text-white">Password</Form.Label>
                 <Form.Control
                   type="password"
                   placeholder="Password"
@@ -77,7 +77,7 @@ const RegisterPage = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="firstName">
-                <Form.Label>First Name</Form.Label>
+                <Form.Label className="text-white">First Name</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="First Name"
@@ -87,7 +87,7 @@ const RegisterPage = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="lastName">
-                <Form.Label>Last Name</Form.Label>
+                <Form.Label className="text-white">Last Name</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Last Name"
@@ -112,7 +112,7 @@ const RegisterPage = () => {
         <Row>
           <Row className="mt-3 justify-content-center">
             <Col md={6}>
-              <p>
+              <p className="text-white">
                 Already have an account? <Link to="/login">Sign in</Link>
               </p>
             </Col>

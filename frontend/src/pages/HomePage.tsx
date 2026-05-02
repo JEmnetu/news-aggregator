@@ -73,10 +73,11 @@ const HomePage = () => {
                     <Button
                       key={index}
                       size="sm"
+                      className="border-2"
                       variant={
                         category === c.toLowerCase()
-                          ? 'primary'
-                          : 'outline-primary'
+                          ? 'outline-primary'
+                          : 'primary'
                       }
                       onClick={() => handleSelectCategory(c.toLowerCase())}
                     >
@@ -113,6 +114,7 @@ const HomePage = () => {
                   return (
                     <Button
                       key={index}
+                      className="button-2"
                       variant={
                         category === c.toLowerCase()
                           ? 'primary'
@@ -173,7 +175,7 @@ const HomePage = () => {
               <Row className="justify-content-center my-4">
                 <Col xs="auto">
                   <Button
-                    variant="outline-primary"
+                    variant="primary"
                     disabled={page === 1}
                     onClick={() => {
                       setPage(page - 1);
@@ -184,12 +186,12 @@ const HomePage = () => {
                     Previous
                   </Button>
                 </Col>
-                <Col xs="auto" className="d-flex align-items-center">
+                <Col xs="auto" className="d-flex align-items-center text-white">
                   Page {page} of {Math.ceil(news.total / pageSize)}
                 </Col>
                 <Col xs="auto">
                   <Button
-                    variant="outline-primary"
+                    variant="primary"
                     disabled={page >= Math.ceil(news.total / pageSize)}
                     onClick={() => {
                       setPage(page + 1);
