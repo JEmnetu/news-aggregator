@@ -149,4 +149,4 @@ App available at `http://localhost:3000`
  
 ## Author
  
-Jacob Emnetu — [GitHub](https://github.com/JEmnetu)
+Jacob Habtemariam — [GitHub](https://github.com/JEmnetu)
