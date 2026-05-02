@@ -17,7 +17,6 @@ const HomePage = () => {
   const [category, setCategory] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [page, setPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>();
 
   const pageSize = 10;
 
@@ -30,9 +29,16 @@ const HomePage = () => {
     'Business',
   ];
 
-  const getNewsArticles = async (currentPage: number = 1) => {
-    const response = await getNews('', '', currentPage, pageSize);
+  const getNewsArticles = async (
+    currentPage: number = 1,
+    currentCategory: string = category,
+  ) => {
+    const response =
+      currentCategory === 'all'
+        ? await getNews('', '', currentPage, pageSize)
+        : await getNews(currentCategory, '', currentPage, pageSize);
     setNews(response);
+    window.scrollTo(0, 0);
   };
 
   const handleSelectCategory = async (cat: string) => {
@@ -180,7 +186,6 @@ const HomePage = () => {
                     onClick={() => {
                       setPage(page - 1);
                       getNewsArticles(page - 1);
-                      window.scrollTo(0, 0);
                     }}
                   >
                     Previous
@@ -196,7 +201,6 @@ const HomePage = () => {
                     onClick={() => {
                       setPage(page + 1);
                       getNewsArticles(page + 1);
-                      window.scrollTo(0, 0);
                     }}
                   >
                     Next
