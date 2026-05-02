@@ -48,8 +48,10 @@ def get_news(
         query = query.filter(Article.categories == category)
     if search:
         query = query.filter(Article.title.ilike(f"%{search}%"))
+    
+    total = query.count()
 
     offset = (page - 1) * page_size
     articles = query.order_by(Article.published_at.desc()).offset(offset).limit(page_size).all()
 
-    return {'data': articles, 'page': page, 'page_size': page_size}
+    return {'data': articles, 'page': page, 'page_size': page_size, 'total': total}
