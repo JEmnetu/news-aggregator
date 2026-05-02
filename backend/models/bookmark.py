@@ -10,6 +10,8 @@ class Bookmark(Base):
     article_url = Column(String, nullable=False)
     image_url = Column(String, nullable=True)
     title = Column(String, nullable=False)
+    description = Column(String, nullable=True)
+    published_at=Column(DateTime(timezone=True), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 # 3 routes - POST /bookmarks GET /bookmarks and DELETE /bookmarks
