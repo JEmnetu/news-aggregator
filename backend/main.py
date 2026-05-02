@@ -12,7 +12,7 @@ scheduler = AsyncIOScheduler()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    scheduler.add_job(fetch_and_store_news, IntervalTrigger(minutes=360))
+    scheduler.add_job(fetch_and_store_news, IntervalTrigger(minutes=30))
     scheduler.start()
     # await fetch_and_store_news()
     yield
