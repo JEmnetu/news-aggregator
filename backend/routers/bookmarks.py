@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from database import get_db
 from models.bookmark import Bookmark
 from dependencies import get_current_user
+from datetime import datetime
 
 
 router = APIRouter(prefix="/bookmarks", tags=["bookmarks"])
@@ -13,9 +14,8 @@ class CreateBookmarkRequest(BaseModel):
     article_url: str
     title: str
     image_url: str = None
-
-class DeleteBookmarkRequest(BaseModel):
-    article_url: str
+    description: str = None
+    published_at: datetime
 
 
 @router.post("/")
@@ -31,7 +31,7 @@ def create_bookmark(
             detail="Bookmark already exists"
         )
     
-    new_bookmark = Bookmark(article_url = request.article_url, title = request.title, image_url = request.image_url, user_id = user_id)
+    new_bookmark = Bookmark(article_url = request.article_url, title = request.title,  user_id = user_id, description = request.description, published_at = request.published_at, image_url = request.image_url,)
     db.add(new_bookmark)
     db.commit()
     db.refresh(new_bookmark)

@@ -25,10 +25,11 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
     const response = await createBookmark(
       article.url,
       article.title,
+      article.description,
+      article.published_at,
       article.image_url,
     );
     await fetchBookmarks();
-    console.log(response);
   };
 
   return (

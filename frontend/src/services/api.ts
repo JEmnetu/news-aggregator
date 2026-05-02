@@ -61,9 +61,9 @@ export const getBookmarks = async (): Promise<BookmarkResponse> => {
     return response.data;
 }
 
-export const createBookmark = async (article_url: string, title: string, image_url?: string): Promise<MessageResponse> => {
+export const createBookmark = async (article_url: string, title: string, description: string, published_at: Date, image_url?: string): Promise<MessageResponse> => {
 
-    const bookmarkData = { article_url, title, image_url }
+    const bookmarkData = { article_url, title, description, published_at, image_url }
     const response = await apiClient.post("/bookmarks", bookmarkData);
     return response.data
 

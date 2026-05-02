@@ -24,7 +24,7 @@ const BookmarkCard = ({ bookmark }: BookmarkCardProps) => {
 
   return (
     <>
-      <Col sm={12} md={4} className="mb-4">
+      <Col sm={12} md={6} lg={4} className="mb-4">
         <Card className="h-100 d-flex flex-column">
           <Card.Img
             variant="top"
@@ -34,7 +34,19 @@ const BookmarkCard = ({ bookmark }: BookmarkCardProps) => {
           />
           <Card.Body>
             <Card.Title className="mb-3">{bookmark.title}</Card.Title>
-
+            <Card.Subtitle>
+              {new Date(bookmark.published_at).toDateString().slice(4)}
+            </Card.Subtitle>
+            <Card.Text
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
+              {bookmark.description}
+            </Card.Text>
             <Row className="d-flex justify-content-between align-items-center mt-auto">
               <Col xs="auto">
                 <Button
