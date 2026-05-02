@@ -16,6 +16,10 @@ const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [category, setCategory] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>();
+
+  const pageSize = 10;
 
   const categories: string[] = [
     'All',
@@ -26,25 +30,26 @@ const HomePage = () => {
     'Business',
   ];
 
-  const getNewsArticles = async () => {
-    const response = await getNews('', '', 1, 20);
+  const getNewsArticles = async (currentPage: number = 1) => {
+    const response = await getNews('', '', currentPage, pageSize);
     setNews(response);
   };
 
   const handleSelectCategory = async (cat: string) => {
     setSearchTerm('');
     setCategory(cat);
+    setPage(1);
     const response =
       cat === 'all'
-        ? await getNews('', '', 1, 20)
-        : await getNews(cat, '', 1, 20);
+        ? await getNews('', '', 1, pageSize)
+        : await getNews(cat, '', 1, pageSize);
     setNews(response);
   };
 
   const handleFilterSearch = async (search: string) => {
     setCategory('all');
-    const response = await getNews('', search, 1, 20);
-
+    setPage(1);
+    const response = await getNews('', search, 1, pageSize);
     setNews(response);
   };
 
@@ -164,6 +169,39 @@ const HomePage = () => {
                 </>
               )}
             </Row>
+            {news && (
+              <Row className="justify-content-center my-4">
+                <Col xs="auto">
+                  <Button
+                    variant="outline-primary"
+                    disabled={page === 1}
+                    onClick={() => {
+                      setPage(page - 1);
+                      getNewsArticles(page - 1);
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    Previous
+                  </Button>
+                </Col>
+                <Col xs="auto" className="d-flex align-items-center">
+                  Page {page} of {Math.ceil(news.total / pageSize)}
+                </Col>
+                <Col xs="auto">
+                  <Button
+                    variant="outline-primary"
+                    disabled={page >= Math.ceil(news.total / pageSize)}
+                    onClick={() => {
+                      setPage(page + 1);
+                      getNewsArticles(page + 1);
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    Next
+                  </Button>
+                </Col>
+              </Row>
+            )}
           </>
         )}
         {loading && (
