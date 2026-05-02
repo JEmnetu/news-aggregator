@@ -42,7 +42,9 @@ const HomePage = () => {
   };
 
   const handleFilterSearch = async (search: string) => {
+    setCategory('all');
     const response = await getNews('', search, 1, 20);
+
     setNews(response);
   };
 
@@ -142,14 +144,25 @@ const HomePage = () => {
             </Row>
 
             <Row className="">
-              {news &&
-                news.data.map((articleData) => {
+              {news?.data.length !== 0 &&
+                news?.data.map((articleData) => {
                   return (
                     <ArticleCard article={articleData} key={articleData.id} />
                   );
                 })}
 
-              {!news && <h3>No articles found!</h3>}
+              {news?.data.length === 0 && (
+                <>
+                  {' '}
+                  <div
+                    className="d-flex justify-content-center align-items-center"
+                    style={{ minHeight: '50vh' }}
+                  >
+                    {' '}
+                    <h3>No articles found!</h3>{' '}
+                  </div>
+                </>
+              )}
             </Row>
           </>
         )}
