@@ -22,7 +22,8 @@ app = FastAPI(lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000",
-                   "https://jhabte.dev"
+                   "https://jhabte.dev",
+                   "https://main.d3obvy4n2s2l0g.amplifyapp.com"
                    ],
     allow_credentials=True,
     allow_methods=["*"],
