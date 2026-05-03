@@ -9,9 +9,7 @@ import { jwtDecode } from 'jwt-decode'
 import { BookmarkResponse } from '../types/BookmarkResponse'
 
 const apiClient: AxiosInstance = axios.create({
-    baseURL: 'http://localhost:8000',
-    // timeout: 10000,
-    // headers: {}
+    baseURL: process.env.REACT_APP_API_URL,
 })
 
 apiClient.interceptors.request.use((config) => {
