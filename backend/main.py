@@ -22,7 +22,8 @@ app = FastAPI(lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000",
-                   "http://jh-news-aggregator-frontend.s3-website-us-east-1.amazonaws.com"
+                   "http://jh-news-aggregator-frontend.s3-website-us-east-1.amazonaws.com",
+                   "https://du0j6gsxc4tze.cloudfront.net/"
                    ],
     allow_credentials=True,
     allow_methods=["*"],
