@@ -16,7 +16,7 @@ const NavBar = () => {
   return (
     <Navbar expand="md" bg="primary" data-bs-theme="dark" className="">
       <Container>
-        <Navbar.Brand href="/"> News Aggregator</Navbar.Brand>
+        <Navbar.Brand href="/"> Newsfeed</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
