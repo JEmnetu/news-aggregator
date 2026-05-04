@@ -22,6 +22,31 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const handleRegister = async () => {
+    // Form validation
+    if (!email || !password || !firstName || !lastName) {
+      setError('All fields are required');
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      return;
+    }
+    if (!email.includes('@')) {
+      setError('Please enter a valid email');
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      return;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      return;
+    }
     try {
       await register(email, password, firstName, lastName);
       navigate('/');
