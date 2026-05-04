@@ -52,6 +52,8 @@ const BookmarkCard = ({ bookmark }: BookmarkCardProps) => {
                 <Button
                   variant="primary"
                   href={bookmark.article_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mb-1"
                 >
                   Read More
