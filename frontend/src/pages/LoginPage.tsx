@@ -20,6 +20,24 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    // Form validation
+    if (!email || !password) {
+      setError('All fields are required');
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      return;
+    }
+    if (!email.includes('@')) {
+      setError('Please enter a valid email');
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      return;
+    }
+
     try {
       await login(email, password);
       navigate('/');
