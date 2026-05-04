@@ -76,4 +76,4 @@ JWT tokens issued on login, stored in localStorage, and attached to every reques
 
 ## Author
 
-Jacob Habtemariam — [GitHub](https://github.com/JEmnetu) | [jhabte.dev](https://jhabte.dev)
+Jacob Habtemariam
