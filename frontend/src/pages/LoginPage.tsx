@@ -43,7 +43,10 @@ const LoginPage = () => {
       navigate('/');
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setError(error.response?.data?.detail);
+        setError(
+          error.response?.data?.detail ||
+            'Too many attempts. Please try again later.',
+        );
         setShowToast(true);
         setTimeout(() => {
           setShowToast(false);
