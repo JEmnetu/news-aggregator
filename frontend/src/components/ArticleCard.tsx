@@ -10,14 +10,14 @@ import { createBookmark } from '../services/api';
 import { MessageResponse } from '../types/MessageResponse';
 import { useAuth } from '../context/AuthContext';
 import placeholder from '../assets/placeholder.png';
-
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import { Tooltip } from 'react-bootstrap';
 interface ArticleCardProps {
   article: Article;
 }
 
 const ArticleCard = ({ article }: ArticleCardProps) => {
-  const { bookmarks, fetchBookmarks } = useAuth();
-
+  const { bookmarks, fetchBookmarks, isAuthenticated } = useAuth();
   const [bookmarkHover, setBookmarkHover] = useState(false);
   const isBookmarked = bookmarks.some((b) => b.article_url === article.url);
 
@@ -90,16 +90,30 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
                     // onClick={() => setIsBookmarked(false)}
                   />
                 )}
-                {!isBookmarked && (
-                  <Bookmark
-                    size={24}
-                    className={bookmarkHover ? 'bookmark-hover' : ''}
-                    style={{ color: '#0f62b6' }}
-                    onMouseEnter={() => setBookmarkHover(true)}
-                    onMouseLeave={() => setBookmarkHover(false)}
-                    onClick={() => saveBookmark()}
-                  />
-                )}
+                {!isBookmarked &&
+                  (isAuthenticated ? (
+                    <Bookmark
+                      size={24}
+                      className={bookmarkHover ? 'bookmark-hover' : ''}
+                      style={{ color: '#0f62b6' }}
+                      onMouseEnter={() => setBookmarkHover(true)}
+                      onMouseLeave={() => setBookmarkHover(false)}
+                      onClick={() => {
+                        saveBookmark();
+                      }}
+                    />
+                  ) : (
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={
+                        <Tooltip>Login to bookmark this article.</Tooltip>
+                      }
+                    >
+                      <span>
+                        <Bookmark size={24} style={{ color: '#0f62b6' }} />
+                      </span>
+                    </OverlayTrigger>
+                  ))}
               </Col>
             </Row>
           </Card.Body>
