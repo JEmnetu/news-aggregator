@@ -31,15 +31,7 @@ function App() {
             </PublicRoute>
           }
         />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              {' '}
-              <HomePage />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/bookmarks"
           element={
